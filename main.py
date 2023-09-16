@@ -18,11 +18,9 @@ all_govs = data.gov.to_list()
 while score < 27:
     answer_gov = screen.textinput(f"{score}/27 Governorate Correct", "What`s the Governorate Name ?").title()
     #print govs not guessed
+
     if answer_gov == "Exit":
-        missing_govs = []
-        for gov in all_govs:
-            if gov not in correct_guesses:
-                missing_govs.append(gov)
+        missing_govs = [gov for gov in all_govs if gov not in correct_guesses]
         print(missing_govs)
         break
     #check correct answer
