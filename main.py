@@ -29,15 +29,16 @@ while score < 27:
     row = data[data.gov == answer_gov]
     gov_str = row.gov.to_string(index=False)
     if answer_gov in all_govs:
-        correct_guesses.append(answer_gov)
-        score += 1
-        #write correct gusses onto the map
-        text.ht()
-        text.penup()
-        x_int = int(row.x)
-        y_int = int(row.y)
-        text.goto(x_int, y_int)
-        text.write(f"{answer_gov}",align="center", font=FONT)
+        if answer_gov not in correct_guesses:
+            correct_guesses.append(answer_gov)
+            score += 1
+            #write correct gusses onto the map
+            text.ht()
+            text.penup()
+            x_int = int(row.x)
+            y_int = int(row.y)
+            text.goto(x_int, y_int)
+            text.write(f"{answer_gov}",align="center", font=FONT)
 #check score!
 end = turtle.Turtle()
 end.penup()
